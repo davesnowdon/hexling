@@ -1,0 +1,7 @@
+# Keep development-only files out of the app-store download to the badge.
+.gitattributes export-ignore
+.gitignore export-ignore
+Makefile export-ignore
+README.md export-ignore
+sim-shot.png export-ignore
+tests export-ignore
