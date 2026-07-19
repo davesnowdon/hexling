@@ -29,6 +29,10 @@ it doesn't have. Without a HexDrive the pet still runs, body offline.
 - `hexdrive.py` — HexDrive detection and slew-limited motor/servo control
 - `face.py` — everything drawn on the screen
 - `tests/` — headless pytest suite (no simulator or hardware needed)
+- `tools/` — dev helpers (headless sim screenshots)
+
+Working on this with an AI agent? [AGENTS.md](AGENTS.md) holds the
+context that isn't discoverable from the code.
 
 ## Commands
 
@@ -38,6 +42,8 @@ it doesn't have. Without a HexDrive the pet still runs, body offline.
   into `$(SIM_DIR)/sim/apps`; override `SIM_DIR` if your
   [badge-2024-software](https://github.com/emfcamp/badge-2024-software)
   checkout lives elsewhere)
+- `make sim-shot [SHOT_FRAMES=n]` — headless sim screenshot, refreshes
+  `sim-shot.png` (default frame count skips the OS boot splash)
 - `make deploy` — copy the app onto a USB-connected badge via mpremote
 
 ## Publishing

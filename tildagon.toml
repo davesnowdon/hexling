@@ -18,7 +18,7 @@ author = "davesnowdon"
 license = "LGPL-3.0-only"
 
 # URL to the repository of your app.
-url = "https://www.github.com/davesnowdon/hexling"
+url = "https://github.com/davesnowdon/hexling"
 
 # Description of your app.  Maximum 140 characters!
 description = "A robot pet for your Tildagon: feed, stroke and play with it. Moves for real with a BadgeBot/HexDrive hexpansion."

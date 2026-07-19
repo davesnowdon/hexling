@@ -7,7 +7,7 @@ MPR     := $(CURDIR)/.venv-sim/bin/mpremote
 # Everything the badge needs at runtime; nothing else gets deployed.
 APP_FILES = __init__.py app.py face.py hexdrive.py metadata.json moves.py pet.py tildagon.toml
 
-.PHONY: test sim deploy venv clean
+.PHONY: test sim sim-shot deploy venv clean
 
 # Headless test suite (plain CPython; no simulator or badge needed).
 test:
@@ -22,6 +22,15 @@ venv:
 sim:
 	ln -sfn $(CURDIR) $(SIM_DIR)/sim/apps/hexling
 	cd $(SIM_DIR)/sim && $(SIM_PY) run.py hexling.HexlingApp
+
+# Headless sim screenshot -> sim-shot.png, taken after SHOT_FRAMES
+# frames (default is comfortably past the OS boot splash).
+SHOT_FRAMES ?= 400
+sim-shot:
+	ln -sfn $(CURDIR) $(SIM_DIR)/sim/apps/hexling
+	cd $(SIM_DIR)/sim && SDL_VIDEODRIVER=dummy SDL_AUDIODRIVER=dummy \
+	    $(SIM_PY) $(CURDIR)/tools/sim_shot.py $(SHOT_FRAMES) hexling.HexlingApp
+	mv $(SIM_DIR)/sim/flow3r.png sim-shot.png
 
 # Copy the app onto a badge connected over USB.
 deploy:
